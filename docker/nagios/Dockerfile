@@ -8,6 +8,7 @@ RUN touch /var/run/nagios.pid
 RUN chown nagios.nagios /var/run/nagios.pid
 RUN chmod u+s /usr/bin/ping
 RUN echo "Hello World" > /var/www/html/index.html
+RUN /usr/bin/newaliases
 RUN mkdir /root/bin
 RUN echo "#!/bin/bash" > /root/bin/startNagios.sh
 RUN echo "/usr/sbin/postfix start" >> /root/bin/startNagios.sh
