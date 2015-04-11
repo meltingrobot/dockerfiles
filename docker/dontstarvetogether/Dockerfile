@@ -3,6 +3,7 @@ FROM centos:latest
 MAINTAINER Roy P "meltingrobot@gmail.com"
 RUN yum -y update
 RUN yum -y install libcurl.i686 libgcc.i686 glibc.i686 tar wget
+RUN mkdir ~/dontstarvetogether
 RUN cd ~
 RUN wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz
 RUN tar -xvzf steamcmd_linux.tar.gz
