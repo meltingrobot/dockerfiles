@@ -15,5 +15,6 @@ RUN echo "/usr/sbin/postfix start" >> /root/bin/startNagios.sh
 RUN echo "/usr/sbin/apachectl" >> /root/bin/startNagios.sh
 RUN echo "/usr/sbin/nagios -d /etc/nagios/nagios.cfg" >> /root/bin/startNagios.sh
 RUN chmod ug+x /root/bin/startNagios.sh
+CMD [ "/bin/bash" ]
 EXPOSE 80
 EXPOSE 443
