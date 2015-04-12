@@ -11,9 +11,11 @@ RUN /usr/bin/newaliases
 RUN mkdir /root/bin
 RUN echo "#!/bin/bash" > /root/bin/startnaemon.sh
 RUN echo "/usr/sbin/postfix start" >> /root/bin/startnaemon.sh
+RUN echo "/bin/sleep 3" >> /root/bin/startnaemon.sh
 RUN echo "/usr/sbin/apachectl" >> /root/bin/startnaemon.sh
-RUN echo "/usr/bin/naemon -d /etc/naemon/naemon.cfg" >> /root/bin/startnaemon.sh
+RUN echo "/bin/sleep 3" >> /root/bin/startnaemon.sh
+RUN echo "/usr/bin/naemon /etc/naemon/naemon.cfg" >> /root/bin/startnaemon.sh
 RUN chmod ug+x /root/bin/startnaemon.sh
-CMD [ "/bin/bash" ]
+CMD [ "/root/bin/startnaemon.sh" ]
 EXPOSE 80
 EXPOSE 443
