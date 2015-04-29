@@ -9,13 +9,9 @@ RUN chmod u+s /usr/bin/ping
 RUN echo "Hello World" > /var/www/html/index.html
 RUN /usr/bin/newaliases
 RUN mkdir /root/bin
-RUN echo "#!/bin/bash" > /root/bin/startnaemon.sh
-RUN echo "/usr/sbin/postfix start" >> /root/bin/startnaemon.sh
-RUN echo "/bin/sleep 3" >> /root/bin/startnaemon.sh
-RUN echo "/usr/sbin/apachectl" >> /root/bin/startnaemon.sh
-RUN echo "/bin/sleep 3" >> /root/bin/startnaemon.sh
-RUN echo "/usr/bin/naemon /etc/naemon/naemon.cfg" >> /root/bin/startnaemon.sh
-RUN chmod ug+x /root/bin/startnaemon.sh
-CMD [ "/root/bin/startnaemon.sh" ]
+RUN echo "/usr/sbin/postfix start" >> /root/.bashrc
+RUN echo "/usr/sbin/apachectl" >> /root/.bashrc
+RUN echo "/usr/bin/naemon /etc/naemon/naemon.cfg" >> /root/.bashrc
+CMD [ "/bin/bash" ]
 EXPOSE 80
 EXPOSE 443
