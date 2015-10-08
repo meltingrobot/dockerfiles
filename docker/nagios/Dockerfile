@@ -3,7 +3,7 @@ FROM centos:latest
 MAINTAINER Roy P "meltingrobot@gmail.com"
 RUN yum -y update
 RUN yum -y install epel-release
-RUN yum -y install mod_ssl nagios nagios-plugins-all postfix openssh-server
+RUN yum -y install mod_ssl nagios nagios-plugins-all postfix
 RUN touch /var/run/nagios.pid
 RUN chown nagios.nagios /var/run/nagios.pid
 RUN chmod u+s /usr/bin/ping
@@ -13,7 +13,7 @@ RUN mkdir /root/bin
 RUN echo "#!/bin/bash" > /root/.bashrc
 RUN echo "/usr/sbin/postfix start" >> /root/.bashrc
 RUN echo "/usr/sbin/apachectl" >> /root/.bashrc
-RUN echo "/usr/sbin/nagios -d /etc/nagios/nagios.cfg" >> /root/.bashrc
-CMD [ "/bin/bash" ]
+CMD [ "/usr/sbin/nagios", "/etc/nagios/nagios.cfg" ]
+VOLUME /etc/nagios
 EXPOSE 80
 EXPOSE 443
