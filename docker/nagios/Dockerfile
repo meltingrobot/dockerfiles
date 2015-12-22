@@ -13,6 +13,8 @@ RUN mkdir /root/bin
 RUN echo "#!/bin/bash" > /root/.bashrc
 RUN echo "/usr/sbin/postfix start" >> /root/.bashrc
 RUN echo "/usr/sbin/apachectl" >> /root/.bashrc
+RUN mkdir /var/log/nagios/rw
+RUN chown nagios.nagios /var/log/nagios/rw/
 CMD [ "/usr/sbin/nagios", "/etc/nagios/nagios.cfg" ]
 VOLUME /etc/nagios
 EXPOSE 80
