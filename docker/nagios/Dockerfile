@@ -11,11 +11,11 @@ RUN echo "Hello World" > /var/www/html/index.html
 RUN /usr/bin/newaliases
 RUN mkdir /root/bin
 RUN echo "#!/bin/bash" > /root/.bashrc
-RUN echo "/usr/sbin/postfix start" >> /root/.bashrc
-RUN echo "/usr/sbin/apachectl" >> /root/.bashrc
 RUN mkdir /var/log/nagios/rw
 RUN chown nagios.nagios /var/log/nagios/rw/
-CMD [ "/usr/sbin/nagios", "/etc/nagios/nagios.cfg" ]
+RUN echo "RedirectMatch ^/$ /nagios/" >> /etc/httpd/conf/httpd.conf
+CMD [ "/bin/bash", "-c", "/usr/sbin/postfix start;/usr/sbin/apachectl;/usr/sbin/nagios /etc/nagios/nagios.cfg" ]
 VOLUME /etc/nagios
+VOLUME /etc/httpd
 EXPOSE 80
 EXPOSE 443
