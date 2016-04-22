@@ -9,5 +9,6 @@ RUN wget -P /usr/local/steamcmd http://media.steampowered.com/installer/steamcmd
 RUN tar -C /usr/local/steamcmd -xvzf /usr/local/steamcmd/steamcmd_linux.tar.gz
 RUN ln -s /usr/lib/libcurl.so.4 /usr/lib/libcurl-gnutls.so.4
 RUN /usr/local/steamcmd/steamcmd.sh +login anonymous +force_install_dir /usr/local/dontstarvetogether +app_update 343050 -validate +quit
-CMD [ "/bin/bash" ]
+CMD [ "cd /usr/local/dontstarvetogether/bin;dontstarve_dedicated_server_nullrenderer" ]
+VOLUME /root/.klei
 EXPOSE 10999/udp
