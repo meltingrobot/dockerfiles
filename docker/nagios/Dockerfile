@@ -10,7 +10,6 @@ RUN chmod u+s /usr/bin/ping
 RUN echo "Hello World" > /var/www/html/index.html
 RUN /usr/bin/newaliases
 RUN mkdir /root/bin
-RUN echo "#!/bin/bash" > /root/.bashrc
 RUN mkdir /var/log/nagios/rw
 RUN chown nagios.nagios /var/log/nagios/rw/
 RUN echo "RedirectMatch ^/$ /nagios/" >> /etc/httpd/conf/httpd.conf
