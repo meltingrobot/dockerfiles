@@ -13,7 +13,7 @@ RUN mkdir /root/bin
 RUN mkdir /var/log/nagios/rw
 RUN chown nagios.nagios /var/log/nagios/rw/
 RUN echo "RedirectMatch ^/$ /nagios/" >> /etc/httpd/conf/httpd.conf
-CMD [ "/bin/bash", "-c", "/usr/sbin/apachectl;/usr/sbin/postfix start;/usr/sbin/nagios /etc/nagios/nagios.cfg" ]
+CMD [ "/bin/bash", "-c", "/usr/bin/yum -y update;/usr/bin/yum -y install httpd fping;/usr/sbin/apachectl;/usr/sbin/postfix start;/usr/sbin/nagios /etc/nagios/nagios.cfg" ]
 VOLUME /etc/nagios
 VOLUME /etc/httpd
 EXPOSE 80
