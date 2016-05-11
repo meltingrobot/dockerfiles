@@ -8,6 +8,7 @@ RUN apt-get -y install language-pack-en
 RUN update-locale LANG=en_US.UTF-8
 RUN apt-get -y install software-properties-common wget
 RUN add-apt-repository ppa:libreoffice/libreoffice-4-4
+RUN add-apt-repository ppa:mc3man/trusty-media
 RUN wget http://ubuntu.bigbluebutton.org/bigbluebutton.asc -O- | sudo apt-key add -
 RUN echo "deb http://ubuntu.bigbluebutton.org/trusty-1-0/ bigbluebutton-trusty main" | tee /etc/apt/sources.list.d/bigbluebutton.list
 RUN apt-get update
