@@ -14,8 +14,8 @@ RUN echo "deb http://ubuntu.bigbluebutton.org/trusty-1-0/ bigbluebutton-trusty m
 RUN apt-get update
 RUN apt-get -y install build-essential git-core checkinstall yasm texi2html libvorbis-dev libx11-dev libvpx-dev libxfixes-dev zlib1g-dev pkg-config netcat libncurses5-dev ffmpeg
 RUN apt-get -y install bigbluebutton bbb-demo bbb-web bbb-check || true
-RUN bbb-conf --enablewebrtc;bbb-conf --clean
-CMD [ "/bin/bash", "-c", "/usr/bin/yum -y update;/usr/bin/yum -y install httpd fping;/usr/sbin/apachectl;/usr/sbin/postfix start;/usr/sbin/nagios /etc/nagios/nagios.cfg" ]
+RUN bbb-conf --enablewebrtc
+CMD [ "/bin/bash", "-c", "bbb-conf --clean" ]
 VOLUME /etc/nagios
 VOLUME /etc/httpd
 EXPOSE 80
