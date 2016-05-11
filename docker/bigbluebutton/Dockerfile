@@ -15,8 +15,7 @@ RUN apt-get -y install build-essential git-core checkinstall yasm texi2html libv
 RUN cd /usr/local/src;wget "http://ffmpeg.org/releases/ffmpeg-2.3.3.tar.bz2";tar -xvjf ffmpeg-2.3.3.tar.bz2
 RUN cd /usr/local/src/ffmpeg-2.3.3;./configure --enable-version3 --enable-postproc --enable-libvorbis --enable-libvpx;make
 RUN cd /usr/local/src/ffmpeg-2.3.3;checkinstall --pkgname=ffmpeg --pkgversion="5:2.3.3" --backup=no --deldoc=yes --default
-RUN apt-get -y install bbb-web bbb-check
-RUN apt-get -y install bigbluebutton bbb-demo
+RUN apt-get -y install bigbluebutton bbb-demo bbb-web bbb-check || true
 RUN bbb-conf --enablewebrtc;bbb-conf --clean
 CMD [ "/bin/bash", "-c", "/usr/bin/yum -y update;/usr/bin/yum -y install httpd fping;/usr/sbin/apachectl;/usr/sbin/postfix start;/usr/sbin/nagios /etc/nagios/nagios.cfg" ]
 VOLUME /etc/nagios
