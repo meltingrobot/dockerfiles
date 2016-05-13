@@ -15,7 +15,7 @@ RUN apt-get update
 RUN apt-get -y install build-essential git-core checkinstall yasm texi2html libvorbis-dev libx11-dev libvpx-dev libxfixes-dev zlib1g-dev pkg-config netcat libncurses5-dev ffmpeg
 RUN apt-get -y install bigbluebutton bbb-demo bbb-web bbb-check || true
 RUN bbb-conf --enablewebrtc
-CMD [ "/bin/bash", "-c", "apt-get -y dist-upgrade;/usr/bin/bbb-conf --clean;/usr/bin/bbb-conf --watch" ]
+CMD [ "/bin/bash", "-c", "apt-get -y dist-upgrade;/usr/bin/bbb-conf --clean;tail -f /var/log/bigbluebutton/*.log" ]
 VOLUME /etc/nagios
 VOLUME /etc/httpd
 EXPOSE 80
