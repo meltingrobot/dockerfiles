@@ -1,4 +1,4 @@
-# Version 0.0.1
+# Version 0.0.2
 FROM centos:latest
 MAINTAINER Roy P "meltingrobot@gmail.com"
 RUN yum -y update
@@ -15,6 +15,7 @@ RUN chown nagios.nagios /var/log/nagios/rw/
 RUN echo "RedirectMatch ^/$ /nagios/" >> /etc/httpd/conf/httpd.conf
 CMD [ "/bin/bash", "-c", "/usr/bin/yum -y update;/usr/sbin/apachectl;/usr/sbin/postfix start;/usr/sbin/nagios /etc/nagios/nagios.cfg" ]
 VOLUME /etc/nagios
+VOLUME /var/spool/nagios
 VOLUME /etc/httpd
 EXPOSE 80
 EXPOSE 443
