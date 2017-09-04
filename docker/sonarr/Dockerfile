@@ -1,4 +1,4 @@
-# Version 0.0.3
+# Version 0.0.4
 FROM fedora:latest
 MAINTAINER Roy P "meltingrobot@gmail.com"
 RUN yum -y update
