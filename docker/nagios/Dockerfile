@@ -8,6 +8,7 @@ RUN touch /var/run/nagios.pid
 RUN chown nagios.nagios /var/run/nagios.pid
 RUN chmod u+s /usr/bin/ping
 RUN echo "Hello World" > /var/www/html/index.html || true
+RUN sed -i 's/inet_protocols = all/inet_protocols = ipv4/g' /etc/postfix/main.cf
 RUN /usr/bin/newaliases
 RUN mkdir /root/bin
 RUN mkdir /var/log/nagios/rw
