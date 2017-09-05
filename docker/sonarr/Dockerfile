@@ -7,4 +7,5 @@ RUN wget http://download.sonarr.tv/v2/master/mono/NzbDrone.master.tar.gz
 RUN tar -xvf NzbDrone.master.tar.gz -C /opt/
 CMD [ "/bin/bash", "-c", "/usr/bin/mono /opt/NzbDrone/NzbDrone.exe -nobrowser -data /opt/NzbDrone" ]
 VOLUME /opt/NzbDrone
+VOLUME /data
 EXPOSE 8989
