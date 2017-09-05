@@ -7,5 +7,4 @@ RUN pip install --upgrade pyopenssl
 RUN git clone https://github.com/CouchPotato/CouchPotatoServer.git /opt/couchpotato
 CMD [ "/bin/python", "/opt/couchpotato/CouchPotato.py" ]
 VOLUME /opt/couchpotato
-VOLUME /data
 EXPOSE 5050

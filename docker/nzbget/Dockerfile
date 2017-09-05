@@ -8,5 +8,4 @@ RUN chmod +x nzbget-latest-bin-linux.run
 RUN sh nzbget-latest-bin-linux.run --destdir /opt/nzbget
 CMD [ "/bin/bash", "-c", "/opt/nzbget/nzbget -s" ]
 VOLUME /opt/nzbget
-VOLUME /data
 EXPOSE 6789
