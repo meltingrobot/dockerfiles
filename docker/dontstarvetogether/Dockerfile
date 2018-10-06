@@ -8,6 +8,7 @@ RUN mkdir /usr/local/steamcmd
 RUN wget -P /usr/local/steamcmd http://media.steampowered.com/installer/steamcmd_linux.tar.gz
 RUN tar -C /usr/local/steamcmd -xvzf /usr/local/steamcmd/steamcmd_linux.tar.gz
 RUN ln -s /usr/lib/libcurl.so.4 /usr/lib/libcurl-gnutls.so.4
+RUN echo $CLUSTER_TOKEN > /root/.klei/DoNotStarveTogether/Cluster_1/cluster_token.txt
 CMD [ "/bin/bash", "-c", "/usr/local/steamcmd/steamcmd.sh +login anonymous +force_install_dir /usr/local/dontstarvetogether +app_update 343050 -validate +quit; cd /usr/local/dontstarvetogether/bin ; ./dontstarve_dedicated_server_nullrenderer" ]
 VOLUME /root/.klei
 VOLUME /usr/local/dontstarvetogether
